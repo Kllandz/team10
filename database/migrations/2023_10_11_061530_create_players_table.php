@@ -16,7 +16,8 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id()->comment('編號(主鍵)');
             $table->string('name')->comment('選手');
-            $table->integer('tid')->unsigned()->comment('隊伍(外部鍵)');
+            $table->foreignId('tid')->comment('隊伍(外部鍵)');
+            $table->foreign('tid')->references('id')->on("teams")->onDelete('cascade');
             $table->string('postition')->comment('位置');
             $table->string('nationality')->nullable()->comment('國籍');
             $table->integer('age')->unsigned()->nullable()->comment('年齡');
