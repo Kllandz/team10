@@ -102,7 +102,7 @@ class PlayersTableSeeder extends Seeder
             $random_datatime = Carbon::now()->subMinutes(rand(1,55));       
             DB::table('players')->insert([      
                 'name' =>$name,
-                'tid' =>rand(1,20),
+                'tid' =>rand(1,40),
                 'postition' =>$postition,
                 'nationality' =>$nationality,
                 'age' =>rand(20,30),

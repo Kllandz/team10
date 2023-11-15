@@ -13,22 +13,46 @@ class TeamsTableSeeder extends Seeder
      */
     public function generateRandomTeams(){
         $teams = array(
-            "Team SoloMid",
-            "Cloud9",
-            "Fnatic",
-            "G2 Esports",
-            "SK Telecom T1",
-            "DAMWON Gaming",
-            "Rogue",
-            "Invictus Gaming",
-            "EDward Gaming",
-            "Gen.G",
-            "Team Liquid",
-            "Afreeca Freecs",
-            "Team Vitality",
-            "FunPlus Phoenix",
-            "Royal Never Give Up",
-            "MAD Lions"
+        "Team SoloMid",
+        "Cloud9",
+        "Fnatic",
+        "G2 Esports",
+        "SK Telecom T1",
+        "Invictus Gaming",
+        "EDward Gaming",
+        "Royal Never Give Up",
+        "Team Liquid",
+        "Afreeca Freecs",
+        "Misfits Gaming",
+        "Rogue",
+        "KT Rolster",
+        "Griffin",
+        "Team WE",
+        "OMG",
+        "FunPlus Phoenix",
+        "LGD Gaming",
+        "Suning",
+        "Victory Five",
+        "Top Esports",
+        "JD Gaming",
+        "Rare Atom",
+        "Bilibili Gaming",
+        "Vici Gaming",
+        "Dignitas",
+        "Evil Geniuses",
+        "100 Thieves",
+        "Immortals",
+        "Golden Guardians",
+        "FlyQuest",
+        "Counter Logic Gaming",
+        "Team Envy",
+        "Renegades",
+        "MAD Lions",
+        "Schalke 04",
+        "Excel Esports",
+        "Rogue Warriors",
+        "LNG Esports",
+        "Ultra Prime"       
         );        
             return $teams[rand(0,count($teams)-1)];     
     }
@@ -51,7 +75,7 @@ class TeamsTableSeeder extends Seeder
 
     public function run()
     {    
-        for($i=0;$i<20;$i++){
+        for($i=0;$i<40;$i++){
             $teams = $this->generateRandomTeams();
             $division = $this->generateRandomDivision();
             $random_datatime = Carbon::now()->subMinutes(rand(1,55));  
