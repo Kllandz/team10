@@ -15,8 +15,10 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //
+        //從Model拿資料
         return Player::all()->toArray();
+        //把資料送給view
+        return view('players_index')->with('players',$p);
     }
 
     /**
