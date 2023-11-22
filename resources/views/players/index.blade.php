@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title> 列出所有隊員 </title>
+<title> 列出所有隊 </title>
 </head>
 
 <body>
