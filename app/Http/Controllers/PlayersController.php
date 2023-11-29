@@ -51,6 +51,7 @@ class PlayersController extends Controller
     public function show($id)
     {
         //
+        return Player::findOrFail($id)->toArray();
     }
 
     /**
@@ -62,6 +63,7 @@ class PlayersController extends Controller
     public function edit($id)
     {
         //
+        return Player::findOrFail($id)->toArray();
     }
 
     /**

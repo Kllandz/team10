@@ -1,10 +1,9 @@
-<html>
+@extends('app')
 
-<head>
-<title> 列出所有選手</title>
-</head>
+@section('title', '列出所有隊員')
 
-<body>
+@section('lol_contents')
+
 <h1>列出所有隊員</h1>
 
 <table>
@@ -30,15 +29,11 @@
         <td>{{ $players[$i]['gender'] }}</td>
         <td><a href="{{ route('players.show', ['id'=>$players[$i]['id']]) }}">顯示</a></td>
         <td><a href="{{ route('players.edit', ['id'=>$players[$i]['id']]) }}">修改</a></td>  
+        <td>刪除</td>
     </tr>
 @endfor
 
+<table>
 
 
-
-
-
-</body>
-
-
-</html>
+@endsection

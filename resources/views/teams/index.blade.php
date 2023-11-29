@@ -1,11 +1,10 @@
-<html>
 
-<head>
-    <title>列出所有隊伍</title>
-</head>
+@extends('app')
 
-<body>
-<h1>列出所有隊伍</h1>
+@section('title', 'LOL - 列出所有戰隊')
+
+@section('lol_contents')
+<h1>列出所有戰隊</h1>
 <table>
     <tr>
         <td>編號</td>
@@ -31,8 +30,9 @@
         <td>{{ $teams[$i]['founded'] }}</td>
         <td><a href="{{ route('teams.show', ['id'=>$teams[$i]['id']]) }}">顯示</a></td>
         <td><a href="{{ route('teams.edit', ['id'=>$teams[$i]['id']]) }}">修改</a></td>    
+        <td>刪除</td>
     </tr>
 @endfor
+<table>
 
-</body>
-</html>
+@endsection
