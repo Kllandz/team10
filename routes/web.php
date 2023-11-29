@@ -18,5 +18,9 @@ Route::get('/',function(){
         return redirect('players');
 });
 Route::get('players',[PlayersController::class, 'index'])->name('players.index');
+Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
+Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
 
 Route::get('teams',[TeamsController::class, 'index'])->name('teams.index');
+Route::get('teams/{id}', [TeamsController::class, 'show'])->where('id', '[0-9]+')->name('teams.show');
+Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0-9]+')->name('teams.edit');
