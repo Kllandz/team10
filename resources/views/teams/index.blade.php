@@ -1,10 +1,8 @@
-<html>
+@extends('app')
 
-<head>
-    <title>列出所有隊伍</title>
-</head>
+@section('title', '英雄聯盟全球總決賽網站 - 列出所有隊伍')
 
-<body>
+@section('worlds_contents')
 <h1>列出所有隊伍</h1>
 <table>
     <tr>
@@ -18,7 +16,7 @@
         <td>總場數</td>
         <td>成立日期</td>
     </tr>
-@for($i=0; $i<count($teams); $i++)
+ @for($i=0; $i<count($teams); $i++)
     <tr>
         <td>{{ $teams[$i]['id'] }}</td>
         <td>{{ $teams[$i]['team'] }}</td>
@@ -32,7 +30,6 @@
         <td><a href="{{ route('teams.show', ['id'=>$teams[$i]['id']]) }}">顯示</a></td>
         <td><a href="{{ route('teams.edit', ['id'=>$teams[$i]['id']]) }}">修改</a></td>    
     </tr>
-@endfor
-
-</body>
-</html>
+ @endfor
+<table>
+@endsection

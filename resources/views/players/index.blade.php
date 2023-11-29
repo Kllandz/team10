@@ -1,10 +1,8 @@
-<html>
+@extends('app')
 
-<head>
-    <title>列出所有選手</title>
-</head>
+@section('title', '網站英雄聯盟全球總決賽網站 - 列出所有選手')
 
-<body>
+@section('worlds_contents')
 <h1>列出所有選手</h1>
 <table>
     <tr>
@@ -17,7 +15,7 @@
         <td>年資</td>
         <td>性別</td>
     </tr>
-@for($i=0; $i<count($players); $i++)
+  @for($i=0; $i<count($players); $i++)
     <tr>
         <td>{{ $players[$i]['id'] }}</td>
         <td>{{ $players[$i]['name'] }}</td>
@@ -28,9 +26,10 @@
         <td>{{ $players[$i]['year'] }}</td>
         <td>{{ $players[$i]['gender'] }}</td>
         <td><a href="{{ route('players.show', ['id'=>$players[$i]['id']]) }}">顯示</a></td>
-        <td><a href="{{ route('players.edit', ['id'=>$players[$i]['id']]) }}">修改</a></td>  
+        <td><a href="{{ route('players.edit', ['id'=>$players[$i]['id']]) }}">修改</a></td>
+        <td>刪除<td>  
     </tr>
-@endfor
+  @endfor
+<table>
 
-</body>
-</html>
+@endsection
