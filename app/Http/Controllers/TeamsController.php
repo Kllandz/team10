@@ -51,8 +51,9 @@ class TeamsController extends Controller
     {
         //
         $teams = Team::findOrFail($id);
+        $players = $teams->players;
 
-        return view('teams.show')->with('teams', $teams);
+        return view('teams.show', ['team'=>$teams, 'players'=>$players]); 
     }
 
     /**
@@ -87,6 +88,8 @@ class TeamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        $team->delete();
+        return redirect('teams');
     }
 }

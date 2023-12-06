@@ -21,7 +21,7 @@
 <tr>
         <td>{{ $player->id }}</td>
         <td>{{ $player->name}}</td>
-        <td>{{ $player->tid}}</td>
+        <td>{{ $player->team->name }}</td>
         <td>{{ $player->postition }}</td>
         <td>{{ $player->nationality }}</td>
         <td>{{ $player->age}}</td>
@@ -29,7 +29,13 @@
         <td>{{ $player->gender }}</td>
         <td><a href="{{ route('players.show', ['id'=>$player->id]) }}">顯示</a></td>
         <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>  
-        <td>刪除</td>
+        <td>
+                <form action="{{ url('/players/delete', ['id' => $player->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
     </tr>
 @endforeach
 

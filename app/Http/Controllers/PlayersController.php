@@ -88,6 +88,8 @@ class PlayersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $player = Player::findOrFail($id);
+        $player->delete();
+        return redirect('players');
     }
 }

@@ -4,17 +4,44 @@
 
 @section('lol_contents')
 
-<h1> 所選隊伍資料 </h1><br/>
+<h1>顯示單一戰隊</h1>
 
+編號：{{ $team->id }}<br/>
+隊伍：{{ $team->team}}<br/>
+年分：{{ $team->year }}<br/>
+賽區：{{ $team->divison}}<br/>
+賽區排名：{{ $team->rank }}<br/>
+今年勝率：{{ $team->rate }}<br/>
+歷年勝率：{{ $team->pastrate }}<br/>
+總場數：{{ $team->games }}<br/>
+成立日期：{{ $team->founded }}<br/>
 
-編號：{{ $teams->id }}<br/>
-選手：{{ $teams->team }}<br/>
-隊伍：{{ $teams->year }}<br/>
-位置：{{ $teams->division}}<br/>
-國籍：{{ $teams->rank }}<br/>
-年齡：{{ $teams->rate }}<br/>
-年資：{{ $teams->pastrate }}<br/>
-性別：{{ $teams->games }}<br/>
-性別：{{ $teams->founded }}<br/>
+<h1>{{ $team->team }}的所有隊員</h1>
+
+<table>
+    <tr>
+        <th>編號</th>
+        <th>選手</th>
+        <th>隊伍</th>
+        <th>位置</th>
+        <th>國籍</th>
+        <th>年齡</th>
+        <th>年資</th>
+        <th>性別</th>
+    </tr>  
+@foreach ($players as $player)
+    <tr>
+        <td>{{ $player->id }}</td>
+        <td>{{ $player->name}}</td>
+        <td>{{ $player->team->team }}</td>
+        <td>{{ $player->postition }}</td>
+        <td>{{ $player->nationality }}</td>
+        <td>{{ $player->age}}</td>
+        <td>{{ $player->year }}</td>
+        <td>{{ $player->gender }}</td>
+    </tr>
+
+@endforeach
+<table>
 
 @endsection
