@@ -18,4 +18,14 @@ class Team extends Model
         'games',
         'founded'
     ];
+
+    public function players()
+    {
+        return $this->hasMany('App\Models\Player','tid');
+    }
+    public function delete()
+    {
+        $this->players()->delete();
+        return parent::delete();
+    } 
 }
