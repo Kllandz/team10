@@ -16,9 +16,9 @@ class PlayersController extends Controller
     public function index()
     {
         //
-        $p = Player::all()->toArray();
+        $players = Player::all();
 
-        return view('players.index')->with('players', $p);
+        return view('players.index')->with('players', $players);
     }
 
     /**
@@ -51,7 +51,9 @@ class PlayersController extends Controller
     public function show($id)
     {
         //
-        return Player::findOrFail($id)->toArray();
+        $player = Player::findOrFail($id);
+
+        return view('players.show')->with('player', $player);
     }
 
     /**
