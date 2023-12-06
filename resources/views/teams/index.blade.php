@@ -18,21 +18,21 @@
         <td>總場數</td>
         <td>成立日期</td>
     </tr>
-@for($i=0; $i<count($teams); $i++)
+@foreach($teams as $team)
     <tr>
-        <td>{{ $teams[$i]['id'] }}</td>
-        <td>{{ $teams[$i]['team'] }}</td>
-        <td>{{ $teams[$i]['year'] }}</td>
-        <td>{{ $teams[$i]['divison'] }}</td>
-        <td>{{ $teams[$i]['rank'] }}</td>
-        <td>{{ $teams[$i]['rate'] }}</td>
-        <td>{{ $teams[$i]['pastrate'] }}</td>
-        <td>{{ $teams[$i]['games'] }}</td>
-        <td>{{ $teams[$i]['founded'] }}</td>
-        <td><a href="{{ route('teams.show', ['id'=>$teams[$i]['id']]) }}">顯示</a></td>
-        <td><a href="{{ route('teams.edit', ['id'=>$teams[$i]['id']]) }}">修改</a></td>   
+        <td>{{ $team->id }}</td>
+        <td>{{ $team->team }}</td>
+        <td>{{ $team->year }}</td>
+        <td>{{ $team->divison }}</td>
+        <td>{{ $team->rank }}</td>
+        <td>{{ $team->rate }}</td>
+        <td>{{ $team->pastrate }}</td>
+        <td>{{ $team->games }}</td>
+        <td>{{ $team->founded }}</td>
+        <td><a href="{{ route('teams.show', ['id'=>$team->id]) }}">顯示</a></td>
+        <td><a href="{{ route('teams.edit', ['id'=>$team->id]) }}">修改</a></td>   
         <td>刪除</td> 
     </tr>
-@endfor
+@endforeach
 <table>
 @endsection

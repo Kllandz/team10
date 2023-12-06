@@ -16,9 +16,9 @@ class PlayersController extends Controller
     public function index()
     {
         //從 Model 拿資料
-        $p = Player::all()->toArray();
+        $players = Player::all();
         //把資料送給 view
-        return view('players.index')->with('players', $p);
+        return view('players.index')->with('players', $players);
     }
 
     /**
@@ -51,6 +51,9 @@ class PlayersController extends Controller
     public function show($id)
     {
         //
+        $player = Player::findOrFail($id);
+        return view('players.show')->with('player',$player);
+       
     }
 
     /**

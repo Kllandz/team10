@@ -7,7 +7,7 @@
 
     <div class="ml-4 text-lg leading-7 font-semibold">
         <a href="{{ route('players.index') }}" class="ml-1 underline">
-            所有球員
+            所有隊員
         </a>
     </div>
 </div>
@@ -21,7 +21,7 @@
 
     <div class="ml-4 text-lg leading-7 font-semibold">
         <a href="{{ route('teams.index') }}" class="ml-1 underline">
-            所有球隊
+            所有隊伍
         </a>
     </div>
 </div>
