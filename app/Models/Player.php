@@ -17,4 +17,9 @@ class Player extends Model
         'year',
         'gender'
     ];
+    
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team', 'tid', 'id');
+    }
 }
