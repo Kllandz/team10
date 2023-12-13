@@ -4,7 +4,11 @@
 
 @section('lol_contents')
 
-<h1>列出所有隊員</h1>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('players.create') }} ">新增球員</a>
+    <a href="{{ route('players.index') }} ">所有球員</a>
+</div>
+
 
 <table>
     <tr>
@@ -21,7 +25,7 @@
 <tr>
         <td>{{ $player->id }}</td>
         <td>{{ $player->name}}</td>
-        <td>{{ $player->team->name }}</td>
+        <td>{{ $player->team->team }}</td>
         <td>{{ $player->postition }}</td>
         <td>{{ $player->nationality }}</td>
         <td>{{ $player->age}}</td>

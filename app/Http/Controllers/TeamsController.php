@@ -27,7 +27,7 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams.create');
     }
 
     /**
@@ -38,7 +38,27 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $team = $request->input('team');
+        $year = $request->input('year');
+        $divison = $request->input('divison');
+        $rank = $request->input('rank');
+        $rate = $request->input('rate');
+        $pastrate = $request->input('pastrate');
+        $games = $request->input('games');
+        $founded = $request->input('founded');
+
+        Team::create([
+            'team'=> $team,
+            'year'=> $year,
+            'divison'=> $divison,
+            'rank'=> $rank,
+            'rate'=> $rate,
+            'pastrate'=> $pastrate,
+            'games'=> $games,
+            'founded'=> $founded,
+        ]);
+
+        return redirect('teams');
     }
 
     /**
@@ -64,8 +84,9 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
-        //
-        return Team::findOrFail($id)->toArray();
+    
+        $team = Team::findOrFail($id);
+        return view('teams.edit', ['team'=>$team]);
     }
 
     /**
@@ -77,7 +98,20 @@ class TeamsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $team = Team::findOrFail($id);
+
+        $team->team = $request->input('team');
+        $team->year = $request->input('year');
+        $team->divison = $request->input('divison');
+        $team->rank = $request->input('rank');
+        $team->rate = $request->input('rate');
+        $team->pastrate = $request->input('pastrate');
+        $team->games = $request->input('games');
+        $team->founded = $request->input('founded');
+        $team->save();
+
+        
+        return redirect('teams');
     }
 
     /**

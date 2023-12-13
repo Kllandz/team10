@@ -3,8 +3,13 @@
 
 @section('title', 'LOL - 列出所有戰隊')
 
+@section('lol_theme', '戰隊成員')
+
 @section('lol_contents')
-<h1>列出所有戰隊</h1>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('teams.create') }} ">新增戰隊</a>
+    <a href="{{ route('teams.index') }} ">所有戰隊</a>
+</div>
 <table>
     <tr>
         <td>編號</td>

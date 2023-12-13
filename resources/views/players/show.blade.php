@@ -9,7 +9,7 @@
 
 編號：{{ $player->id }}<br/>
 選手：{{ $player->name }}<br/>
-隊伍：{{ $player->team->name }}<br/>
+隊伍：{{ $player->team->team }}<br/>
 位置：{{ $player->postition}}<br/>
 國籍：{{ $player->nationality }}<br/>
 年齡：{{ $player->age }}<br/>

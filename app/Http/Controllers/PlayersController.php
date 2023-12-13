@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
-
+use App\Models\Team;
 
 class PlayersController extends Controller
 {
@@ -28,7 +28,8 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.team', 'teams.id');
+        return view('players.create', ['teams' =>$teams, 'teamSelected' => null]);
     }
 
     /**
@@ -39,7 +40,23 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $tid = $request->input('tid');
+        $postition = $request->input('postition');
+        $nationality = $request->input('nationality');
+        $age = $request->input('age');
+        $year = $request->input('year');
+        $gender = $request->input('gender');
+
+        $player = Player::create([
+            'name'=>$name,
+            'tid'=>$tid,
+            'postition'=>$postition,
+            'nationality'=>$nationality,
+            'age'=>$age,
+            'year'=>$year,
+            'gender'=>$gender]);
+        return redirect('players');
     }
 
     /**
@@ -65,7 +82,10 @@ class PlayersController extends Controller
     public function edit($id)
     {
         //
-        return Player::findOrFail($id)->toArray();
+        $player = Player::findOrFail($id);
+        $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.team', 'teams.id');
+        $selected_tags = $player->team->id;
+        return view('players.edit', ['player' =>$player, 'teams' => $teams, 'teamSelected' => $selected_tags]);
     }
 
     /**
@@ -77,7 +97,18 @@ class PlayersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $player = Player::findOrFail($id);
+
+        $player->name = $request->input('name');
+        $player->tid = $request->input('tid');
+        $player->postition = $request->input('postition');
+        $player->nationality = $request->input('nationality');
+        $player->age = $request->input('age');
+        $player->year = $request->input('year');
+        $player->gender = $request->input('gender');
+        $player->save();
+
+        return redirect('players');
     }
 
     /**

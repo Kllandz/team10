@@ -82,7 +82,7 @@ class TeamsTableSeeder extends Seeder
             DB::table('teams')->insert([      
                 'team' =>$teams,
                 'year' =>2023,
-                'divison' =>$division,
+                'divison' =>$divison,
                 'rank' =>rand(1,4),
                 'rate' =>rand(40,80),
                 'pastrate'=>rand(40,80),
