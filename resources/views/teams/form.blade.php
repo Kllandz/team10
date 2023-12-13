@@ -1,22 +1,19 @@
-<div class="form-group">
-    {!! Form::label('id', '隊伍名稱：') !!}
-    {!! Form::text('id', null, ['class' => 'form-control']) !!}
-</div>
+
 <div class="form-group">
     {!! Form::label('team', '隊伍:') !!}
-    <!-- 待設計一下拉式選單 -->
+    {!! Form::text('team', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('year','年份:') !!}
-    {!! Form::date('year',null ,['class'=>'form-control']) !!}
+    {!! Form::text('year',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('divison','賽區:') !!}
-    {!! Form::date('divison',null ,['class'=>'form-control']) !!}
+    {!! Form::text('divison',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('rank','賽區排名:') !!}
-    {!! Form::date('rank',null ,['class'=>'form-control']) !!}
+    {!! Form::text('rank',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('rate', '今年勝率：') !!}

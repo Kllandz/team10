@@ -4,15 +4,15 @@
 </div>
 <div class="form-group">
     {!! Form::label('tid', '所屬隊伍：') !!}
-    <!-- 待設計一下拉式選單 -->
+    {!! Form::select('tid', $teams, $teamSelected, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('postition','位置:') !!}
-    {!! Form::date('postition',null ,['class'=>'form-control']) !!}
+    {!! Form::text('postition',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('nationality','國籍:') !!}
-    {!! Form::date('nationality',null ,['class'=>'form-control']) !!}
+    {!! Form::text('nationality',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('age', '年齡：') !!}

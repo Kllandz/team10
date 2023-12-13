@@ -14,6 +14,7 @@ use App\Http\Controllers\TeamsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // 註解一下
 Route::get('/', function () {
         return redirect('players');
@@ -28,11 +29,12 @@ Route::get('/', function () {
     Route::delete('players/delete/{id}', [PlayersController::class, 'destroy'])->where('id', '[0-9]+')->name('players.destroy');
     // 新增球員表單
     Route::get('players/create', [PlayersController::class, 'create'])->name('players.create');
-    /// 修改球員表單
-    Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
     // 修改球員表單
-    Route::get('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
-
+    Route::get('players/{id}/edit', [PlayersController::class, 'edit'])->where('id', '[0-9]+')->name('players.edit');
+    // 修改球員
+    Route::patch('players/update/{id}', [PlayersController::class, 'update'])->where('id', '[0-9]+')->name('players.update');
+    // 儲存新球員資料
+    Route::post('players/store', [PlayersController::class, 'store'])->where('id', '[0-9]+')->name('players.store');
     
     // 顯示顯示所有球隊資料
     Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
@@ -46,5 +48,7 @@ Route::get('/', function () {
     Route::get('teams/create', [TeamsController::class, 'create'])->name('teams.create');
     // 修改球隊表單
     Route::get('teams/{id}/edit', [TeamsController::class, 'edit'])->where('id', '[0-9]+')->name('teams.edit');
-    // 修改球隊表單
-    Route::get('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
+    // 修改球隊資料
+    Route::patch('teams/update/{id}', [TeamsController::class, 'update'])->where('id', '[0-9]+')->name('teams.update');
+    // 儲存新球隊資料
+    Route::post('teams/store', [TeamsController::class, 'store'])->name('teams.store');
