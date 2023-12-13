@@ -5,7 +5,11 @@
 @sectiom('lol_theme', '職業選手')
 
 @section('worlds_contents')
-<h1>列出所有選手</h1>
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('players.create') }} ">新增選手</a>
+    <a href="{{ route('players.index') }} ">所有選手</a>
+</div>
+
 <table>
     <tr>
         <td>編號</td>

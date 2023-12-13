@@ -28,7 +28,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        //
+        return view('players.create');
     }
 
     /**
@@ -62,7 +62,8 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::findOrFail($id);
+        return view('players.edit', ['player' =>$player]);
     }
 
     /**
