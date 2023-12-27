@@ -30,6 +30,36 @@ class TeamsController extends Controller
         return view('teams.create');
     }
 
+    public function rank1()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('1')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+
+
+    public function rank2()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('2')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank3()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('3')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank4()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('4')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
     /**
      * Store a newly created resource in storage.
      *

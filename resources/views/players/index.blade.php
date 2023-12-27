@@ -4,8 +4,10 @@
 
 @section('worlds_contents')
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-    <a href="{{ route('players.create') }} ">新增球員</a>
-    <a href="{{ route('players.index') }} ">所有球員</a>
+    <a href="{{ route('players.create') }} ">新增選手</a>
+    <a href="{{ route('players.index') }} ">所有選手</a>
+    <a href="{{ route('players.male') }} ">男選手</a>
+    <a href="{{ route('players.female') }} ">女選手</a>
 </div>
 <table>
     <tr>

@@ -22,4 +22,8 @@ class Player extends Model
     {
         return $this->belongsTo('App\Models\Team', 'tid', 'id');
     }
+    public function scopeGender($query, $gender)
+    {
+        $query->where('gender', '=', $gender )->orderBy('id', 'asc');
+    }
 }

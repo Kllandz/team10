@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', '英雄聯盟全球總决賽網站 - 列出所有隊員')
+@section('title', '英雄聯盟全球總决賽網站 - 列出所有選手')
 
 @section('worlds_contents')
 <h1>列出選擇選手</h1>

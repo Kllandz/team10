@@ -21,7 +21,23 @@ class PlayersController extends Controller
         //把資料送給 view
         return view('players.index')->with('players', $players);
     }
+    
+    public function male()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::gender('男')->get();
 
+        // 把資料送給 view
+        return view('players.index')->with('players', $players);
+    }
+    public function female()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::gender('女')->get();
+
+        // 把資料送給 view
+        return view('players.index')->with('players', $players);
+    }
     /**
      * Show the form for creating a new resource.
      *

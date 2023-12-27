@@ -28,4 +28,8 @@ class Team extends Model
         $this->players()->delete();
         return parent::delete();
     } 
+    public function scopeRank($query, $rank)
+    {
+        $query->where('rank', '=', $rank);
+    }
 }
