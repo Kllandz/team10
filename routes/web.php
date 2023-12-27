@@ -19,6 +19,8 @@ Route::get('/',function(){
 });
 // 顯示所有選手資料
 Route::get('players',[PlayersController::class, 'index'])->name('players.index');
+// 選定位置查詢選手
+Route::get('players/postition', [PlayersController::class, 'postition'])->name('players.postition');
 // 顯示男選手資料
 Route::get('players/male',[PlayersController::class, 'male'])->name('players.male');
 // 顯示女選手資料

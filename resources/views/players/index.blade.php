@@ -8,6 +8,12 @@
     <a href="{{ route('players.index') }} ">所有選手</a>
     <a href="{{ route('players.male') }} ">男選手</a>
     <a href="{{ route('players.female') }} ">女選手</a>
+    <form action="{{ url('players/postition') }}" method='GET'>
+        {!! Form::label('pos', '選取位置：') !!}
+        {!! Form::select('pos', $postitions, ['class' => 'form-control']) !!}
+        <input class="btn btn-default" type="submit" value="查詢" />
+        @csrf
+    </form>    
 </div>
 <table>
     <tr>
@@ -42,4 +48,5 @@
     </tr>
     @endforeach
 <table>
+
 @endsection

@@ -26,4 +26,13 @@ class Player extends Model
     {
         $query->where('gender', '=', $gender )->orderBy('id', 'asc');
     }
+    public function scopeAllPostitions($query)
+    { 
+        return $query->select('postition')->groupBy('postition');
+    }
+
+    public function scopePostition($query, $pos)
+    {
+        return $query->where('postition', '=', $pos);
+    }    
 }

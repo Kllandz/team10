@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Player;
 use App\Models\Team;
 use App\Http\Requests\CreatePlayerRequest;
+use Illuminate\Http\Request;
 
 class PlayersController extends Controller
 {
@@ -18,26 +18,33 @@ class PlayersController extends Controller
     {
         //從 Model 拿資料
         $players = Player::all();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
         //把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
     }
     
     public function male()
     {
         // 從 Model 拿特定條件下的資料
         $players = Player::gender('男')->get();
-
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
         // 把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
     }
     public function female()
     {
         // 從 Model 拿特定條件下的資料
         $players = Player::gender('女')->get();
-
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
         // 把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
     }
+    public function postition(Request $request)
+    {
+        $players = Player::postition($request->input('pos'))->get();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');     
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
+    }   
     /**
      * Show the form for creating a new resource.
      *
