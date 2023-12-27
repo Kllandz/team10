@@ -19,6 +19,8 @@ Route::get('/',function(){
 });
 // 顯示顯示所有球員資料
 Route::get('players', [PlayersController::class, 'index'])->name('players.index');
+// 顯示顯示所有球員資料
+Route::get('players/senior', [PlayersController::class, 'senior'])->name('players.senior');
 // 顯示單一球員資料
 Route::get('players/{id}', [PlayersController::class, 'show'])->where('id', '[0-9]+')->name('players.show');
 // 修改單一球員表單
@@ -36,6 +38,14 @@ Route::post('players/store', [PlayersController::class, 'store'])->where('id', '
 
 // 顯示顯示所有球隊資料
 Route::get('teams', [TeamsController::class, 'index'])->name('teams.index');
+// 顯示顯示rank1球隊資料
+Route::get('teams/rank1', [TeamsController::class, 'rank1'])->name('teams.rank1');
+// 顯示顯示rank2球隊資料
+Route::get('teams/rank2', [TeamsController::class, 'rank2'])->name('teams.rank2');
+// 顯示顯示rank3球隊資料
+Route::get('teams/rank3', [TeamsController::class, 'rank3'])->name('teams.rank3');
+// 顯示顯示rank4球隊資料
+Route::get('teams/rank4', [TeamsController::class, 'rank4'])->name('teams.rank4');
 // 顯示單一球隊資料
 Route::get('teams/{id}', [TeamsController::class, 'show'])->where('id', '[0-9]+')->name('teams.show');
 // 修改單一球隊表單

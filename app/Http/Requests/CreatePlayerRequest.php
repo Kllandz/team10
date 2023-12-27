@@ -26,24 +26,21 @@ class CreatePlayerRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:191',
             'tid' => 'required',
-            'postition' => 'nullable',
+            'postition' => 'required|string|min:2|max:191',
             'nationality' => 'nullable',
-            'age' => 'required|numeric|min:15|max:30',
-            'year' => 'required|numeric|min:0|max:20',
+            'age' => 'nullable',
+            'year' => 'nullable',
             'gender' => 'nullable'            
         ];
     }
     public function messages()
     {
         return [
-            "name.required" => "球員名稱 為必填",
-            "name.min" => "球員名稱 至少需2個字元",
-            "tid.required" => "球隊編號 為必填",
-            "position.required" => "球員位置 為必填",
-            "nationality.required" => "球員國籍 為必填",
-            "year.required" => "球員年資 為必填",
-            "year.min" => "球員年資 範圍必須介於0~20之間",
-            "year.max" => "球員年資 範圍必須介於0~20之間",
+            "name.required" => "隊員名稱 為必填",
+            "name.min" => "隊員名稱 至少需2個字元",
+            "tid.required" => "隊伍 為必填",
+            "postition.required" => "隊員位置 為必填",
+            "postition.min" => "隊員名稱 至少需2個字元"
         ];
     }    
 }

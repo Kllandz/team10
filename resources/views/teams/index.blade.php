@@ -9,6 +9,11 @@
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
     <a href="{{ route('teams.create') }} ">新增戰隊</a>
     <a href="{{ route('teams.index') }} ">所有戰隊</a>
+    <a href="{{ route('teams.rank1') }} ">排名1戰隊</a>
+    <a href="{{ route('teams.rank2') }} ">排名2戰隊</a>
+    <a href="{{ route('teams.rank3') }} ">排名3戰隊</a>
+    <a href="{{ route('teams.rank4') }} ">排名4戰隊</a>
+
 </div>
 <table>
     <tr>

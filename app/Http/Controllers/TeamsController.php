@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\Team;
+use App\Http\Requests\CreateTeamRequest;
 
 class TeamsController extends Controller
 {
@@ -20,6 +21,35 @@ class TeamsController extends Controller
         return view('teams.index')->with('teams', $teams);
     }
 
+
+    public function rank1()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('1')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank2()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('2')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank3()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('3')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank4()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('4')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +66,7 @@ class TeamsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTeamRequest $request)
     {
         $team = $request->input('team');
         $year = $request->input('year');
@@ -96,7 +126,7 @@ class TeamsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateTeamRequest $request, $id)
     {
         $team = Team::findOrFail($id);
 

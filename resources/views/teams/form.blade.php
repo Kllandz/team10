@@ -28,7 +28,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('founded', '成立日期：') !!}
-    {!! Form::text('founded', null, ['class' => 'form-control']) !!}
+    {!! Form::date('founded', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class'=>'btn btn-primary form-control']) !!}

@@ -58,7 +58,7 @@ class TeamsTableSeeder extends Seeder
     }
     
     public function generateRandomDivision(){
-        $division = array(
+        $divison = array(
             "LCK (League of Legends Champions Korea)",
             "LPL (League of Legends Pro League)",
             "LEC (League of Legends European Championship)",
@@ -70,14 +70,14 @@ class TeamsTableSeeder extends Seeder
             "LLA (Liga Latinoamérica de League of Legends)",
             "PCS (Pacific Championship Series)"
         );
-        return $division[rand(0,count($division)-1)];
+        return $divison[rand(0,count($divison)-1)];
     }
 
     public function run()
     {    
         for($i=0;$i<40;$i++){
             $teams = $this->generateRandomTeams();
-            $division = $this->generateRandomDivision();
+            $divison = $this->generateRandomDivision();
             $random_datatime = Carbon::now()->subMinutes(rand(1,55));  
             DB::table('teams')->insert([      
                 'team' =>$teams,
