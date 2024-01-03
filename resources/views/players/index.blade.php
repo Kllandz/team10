@@ -5,7 +5,9 @@
 @section('lol_contents')
 
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    @can('admin')
     <a href="{{ route('players.create') }} ">新增球員</a>
+    @endcan
     <a href="{{ route('players.index') }} ">所有球員</a>
     <a href="{{ route('players.senior') }} ">資深隊員</a>
 </div>
@@ -21,6 +23,13 @@
         <td>年齡</td>
         <td>年資</td>
         <td>性別</td>
+        <td>操作1</td>
+        @can('admin')
+        <td>操作2</td>
+        <td>操作3</td>
+        @elsecan('manager')
+        <th>操作2</th>
+        @endcan
     </tr>
 @foreach($players as $player)
 <tr>
@@ -33,6 +42,7 @@
         <td>{{ $player->year }}</td>
         <td>{{ $player->gender }}</td>
         <td><a href="{{ route('players.show', ['id'=>$player->id]) }}">顯示</a></td>
+        @can('admin')
         <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>  
         <td>
                 <form action="{{ url('/players/delete', ['id' => $player->id]) }}" method="post">
@@ -41,6 +51,9 @@
                     @csrf
                 </form>
             </td>
+            @elsecan('manager')
+            <td><a href="{{ route('players.edit', ['id'=>$player->id]) }}">修改</a></td>
+            @endcan
     </tr>
 @endforeach
 

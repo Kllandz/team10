@@ -90,6 +90,7 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
         //
         $player = Player::findOrFail($id);
         $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.team', 'teams.id');
