@@ -113,6 +113,7 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
         //
         $team = Team::findOrFail($id);
         return view('teams.edit', ['team'=>$team]);

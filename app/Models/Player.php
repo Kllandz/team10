@@ -24,7 +24,7 @@ class Player extends Model
     }
     public function scopeGender($query, $gender)
     {
-        $query->where('gender', '=', $gender )->orderBy('id', 'asc');
+        $query->where('gender', '=', $gender )->orderBy('postition', 'asc');
     }
     public function scopeAllPostitions($query)
     { 
