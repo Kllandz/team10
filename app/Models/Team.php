@@ -11,7 +11,7 @@ class Team extends Model
     protected $fillable = [
         'team',
         'year',
-        'division',
+        'divison',
         'rank',
         'rate',
         'pastrate',
