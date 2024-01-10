@@ -6,9 +6,9 @@
 
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
     @can('admin')
-    <a href="{{ route('players.create') }} ">新增球員</a>
+    <a href="{{ route('players.create') }} ">新增隊員</a>
     @endcan
-    <a href="{{ route('players.index') }} ">所有球員</a>
+    <a href="{{ route('players.index') }} ">所有隊員</a>
     <a href="{{ route('players.senior') }} ">資深隊員</a>
 </div>
 
