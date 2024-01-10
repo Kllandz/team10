@@ -11,22 +11,25 @@ class Team extends Model
     protected $fillable = [
         'team',
         'year',
-        'division',
+        'divison',
         'rank',
         'rate',
         'pastrate',
         'games',
         'founded'
     ];
-    
+
     public function players()
     {
-        return $this->hasMany('App\Models\Player', 'tid');
+        return $this->hasMany('App\Models\Player','tid');
     }
-
     public function delete()
     {
         $this->players()->delete();
         return parent::delete();
-    }        
+    } 
+    public function scopeRank($query, $rank)
+    {
+        $query->where('rank', '=', $rank);
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Team;
+use App\Http\Requests\CreateTeamRequest;
 
+use App\Models\Team;
 class TeamsController extends Controller
 {
     /**
@@ -30,15 +30,46 @@ class TeamsController extends Controller
         return view('teams.create');
     }
 
+    public function rank1()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('1')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+
+
+    public function rank2()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('2')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank3()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('3')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
+    public function rank4()
+    {
+        // 從 Model 拿資料
+        $teams = Team::rank('4')->get();
+        // 把資料送給 view
+        return view('teams.index')->with('teams', $teams);
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTeamRequest $request)
     {
-        $tid = $request->input('tid');
+        //
+        $team = $request->input('team');
         $year = $request->input('year');
         $divison = $request->input('divison');
         $rank = $request->input('rank');
@@ -46,15 +77,14 @@ class TeamsController extends Controller
         $pastrate = $request->input('pastrate');
         $games = $request->input('games');
         $founded = $request->input('founded');
-
         Team::create([
-            'tid' => $tid,
+            'team' => $team,
             'year' => $year,
             'divison' => $divison,
             'rank' => $rank,
             'rate' => $rate,
             'pastrate' => $pastrate,
-            'games' => $games,
+            'games' => $games,         
             'founded' => $founded
         ]);
 
@@ -69,9 +99,10 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
+        //
         $team = Team::findOrFail($id);
         $players = $team->players;
-        return view('teams.show', ['team'=>$team, 'players'=>$players]);
+        return view('teams.show', ['team'=>$team, 'players'=>$players]);    
     }
 
     /**
@@ -82,9 +113,12 @@ class TeamsController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
+        //
         $team = Team::findOrFail($id);
         return view('teams.edit', ['team'=>$team]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -92,8 +126,9 @@ class TeamsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateTeamRequest $request, $id)
     {
+        //
         $team = Team::findOrFail($id);
 
         $team->team = $request->input('team');

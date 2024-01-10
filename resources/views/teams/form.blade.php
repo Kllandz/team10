@@ -1,6 +1,5 @@
-
 <div class="form-group">
-    {!! Form::label('team', '隊伍:') !!}
+    {!! Form::label('team', '隊伍：') !!}
     {!! Form::text('team', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
@@ -12,8 +11,8 @@
     {!! Form::text('divison',null ,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('rank','賽區排名:') !!}
-    {!! Form::text('rank',null ,['class'=>'form-control']) !!}
+    {!! Form::label('rank', '賽區排名：') !!}
+    {!! Form::text('rank', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('rate', '今年勝率：') !!}

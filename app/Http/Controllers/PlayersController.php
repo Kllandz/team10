@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
-
+use App\Http\Requests\CreatePlayerRequest;
+use Illuminate\Http\Request;
 
 class PlayersController extends Controller
 {
@@ -18,10 +18,33 @@ class PlayersController extends Controller
     {
         //從 Model 拿資料
         $players = Player::all();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
         //把資料送給 view
-        return view('players.index')->with('players', $players);
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
     }
-
+    
+    public function male()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::gender('男')->get();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
+        // 把資料送給 view
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
+    }
+    public function female()
+    {
+        // 從 Model 拿特定條件下的資料
+        $players = Player::gender('女')->get();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');
+        // 把資料送給 view
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
+    }
+    public function postition(Request $request)
+    {
+        $players = Player::postition($request->input('pos'))->get();
+        $postitions = Player::allPostitions()->pluck('players.postition', 'players.postition');     
+        return view('players.index', ['players' => $players, 'postitions'=>$postitions]);
+    }   
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +62,7 @@ class PlayersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePlayerRequest $request)
     {
         $name = $request->input('name');
         $tid = $request->input('tid');
@@ -56,8 +79,8 @@ class PlayersController extends Controller
             'nationality'=>$nationality,
             'age'=>$age,
             'year'=>$year,
-            'gender'=>$gender]);
-        return redirect('players');
+            'gender'=>$gender]);     
+            return redirect('players');
     }
 
     /**
@@ -68,10 +91,10 @@ class PlayersController extends Controller
      */
     public function show($id)
     {
+        //
         $player = Player::findOrFail($id);
-        $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.team', 'teams.id');
-        $selected_tags = $player->team->id;
-        return view('players.edit', ['player' =>$player, 'teams' => $teams, 'teamSelected' => $selected_tags]);
+        return view('players.show')->with('player',$player);
+       
     }
 
     /**
@@ -82,6 +105,8 @@ class PlayersController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
+        
         $player = Player::findOrFail($id);
         $teams = Team::orderBy('teams.id', 'asc')->pluck('teams.team', 'teams.id');
         $selected_tags = $player->team->id;
@@ -95,17 +120,17 @@ class PlayersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePlayerRequest $request, $id)
     {
         $player = Player::findOrFail($id);
-
+        
         $player->name = $request->input('name');
         $player->tid = $request->input('tid');
-        $player->position = $request->input('postition');
+        $player->postition = $request->input('postition');
         $player->nationality = $request->input('nationality');
         $player->age = $request->input('age');
         $player->year = $request->input('year');
-        $player->gender = $request->input('gender');
+        $player->gender = $request->input('gender');        
         $player->save();
 
         return redirect('players');
@@ -118,7 +143,9 @@ class PlayersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+
+
         $player = Player::findOrFail($id);
         $player->delete();
         return redirect('players');

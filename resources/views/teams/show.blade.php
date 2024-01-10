@@ -1,42 +1,44 @@
 @extends('app')
 
-@section('title', '網站英雄聯盟全球總決賽網站 - 列出所有隊伍')
-
-@sectiom('lol_theme', '職業隊伍')
+@section('title', '英雄聯盟全球總决賽網站 - 列出所有隊伍')
 
 @section('worlds_contents')
-隊伍編號:{{ $team->id }}<br/>
-隊伍名稱:{{ $team->team }}<br/>
-隊伍年份:{{ $team->year }}<br/>
-隊伍賽區:{{ $team->divison }}<br/>
-隊伍賽區排名:{{ $team->rank }}<br/>
-隊伍今年勝率:{{ $team->rate }}<br/>
-隊伍歷年勝率:{{ $team->pastrate }}<br/>
-隊伍總場次:{{ $team->games }}<br/>
-隊伍建立日期:{{ $team->founded }}<br/>
-<h1>{{ $team->team }}的所有選手</h1>
+<h1>列出選擇隊伍</h1>
+<table>
+<td>編號:{{$team['id']}}</tr>
+<td>隊伍:{{$team['team']}}</tr>
+<td>年份:{{$team['year']}}</tr>
+<td>賽區:{{$team['divison']}}</tr>
+<td>賽區排名:{{$team['rank']}}</tr>
+<td>今年勝率:{{$team['rate']}}</tr>
+<td>歷年勝率:{{$team['pastrate'] }}</tr>
+<td>總場數:{{$team['games']}}</tr>
+<td>成立日期:{{$team['founded']}}</tr>
+<table>
+
+<h1>{{ $team->team }}的所有隊員</h1>
 
 <table>
     <tr>
-        <td>編號</td>
-        <td>選手</td>
-        <td>所屬隊伍</td>
-        <td>位置</td>
-        <td>國籍</td>
-        <td>年齡</td>
-        <td>年資</td>
-        <td>性別</td>
+        <th>編號</th>
+        <th>選手</th>
+        <td>隊伍</td>
+        <th>位置</th>
+        <th>國籍</th>
+        <th>年齡</th>
+        <th>年資</th>
+        <th>性別</th>
     </tr>
-    @foreach ($players as $player)
-        <tr>
-            <td>{{ $player->id }}</td>
-            <td>{{ $player->name }}</td>
-            <td>{{ $player->team->team }}</td>
-            <td>{{ $player->postition }}</td>
-            <td>{{ $player->nationality }}</td>
-            <td>{{ $player->age }}</td>
-            <td>{{ $player->year }}</td>
-            <td>{{ $player->gender }}</td>
+    @foreach($players as $player)
+    <tr>
+        <td>{{ $player->id }}</td>
+        <td>{{ $player->name }}</td>
+        <td>{{ $player->team->team }}</td>
+        <td>{{ $player->postition }}</td>
+        <td>{{ $player->nationality }}</td>
+        <td>{{ $player->age }}</td>
+        <td>{{ $player->year }}</td>
+        <td>{{ $player->gender }}</td>
         </tr>
     @endforeach
 <table>
